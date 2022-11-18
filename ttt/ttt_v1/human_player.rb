@@ -7,6 +7,7 @@ class humanPlayer
 
     def get_position
         pos = gets.chomp
+        raise 'error' if pos.length != 2 
         row, col = pos
     end
 end
