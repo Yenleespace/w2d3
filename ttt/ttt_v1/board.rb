@@ -51,13 +51,11 @@ class Board
     end
 
     def win_diagonal?(mark)
-        (0...@grid.length).each do |i|
-            return false if @grid[i][i] != mark
-        end
-        (0...@grid.length).each do |j|
-            return false if @grid[j][@grid.length - 1 - i] != mark
-        end
-        true
+        left = 0
+        right = 0
+        (0...@grid.length).each { |i| left += 1 if @grid[i][i] == mark }
+        (0...@grid.length).each { |j| right += 1 if @grid[j][@grid.length - 1 - j] == mark }
+        left == 3 || right == 3
     end
 
     def win?(mark)
